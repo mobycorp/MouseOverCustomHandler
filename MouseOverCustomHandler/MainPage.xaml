@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:fonts="clr-namespace:MobyClient.Infrastructure"
+	x:Class="MouseOverCustomHandler.MainPage">
+	<Grid
+		ColumnDefinitions="1*, 250, 1*"
+		ColumnSpacing="10"
+		RowDefinitions="1*, 150, 35, 1*">
+		<Label
+			Grid.Column="1"
+			Grid.Row="1"
+			LineBreakMode="WordWrap"
+			Text="&lt;b&gt;Method Two&lt;/b&gt;&lt;br&gt;This button reacts to mouse over events, but since the sender object cannot be cast to a VisualElement the VisualStateManager.GoToState cannot even be established because the compiler compains..."
+			TextType="Html" />
+		<Button
+			Grid.Column="1"
+			Grid.Row="2"
+			BackgroundColor="Green"
+			CornerRadius="0"
+			HeightRequest="30"
+			HorizontalOptions="Center"
+			Padding="8,2"
+			Text="Testing"
+			TextColor="White"
+			VerticalOptions="Center">
+			<Button.ImageSource>
+				<FontImageSource
+					FontFamily="FaLight"
+					Glyph="{x:Static fonts:FontAwesomeLight.FolderPlus}"
+					Size="{StaticResource SizeTabIcon}"
+					Color="White" />
+			</Button.ImageSource>
+			<VisualStateManager.VisualStateGroups>
+				<VisualStateGroup
+					x:Name="MouseOverStates">
+					<VisualState
+						x:Name="PointerEntered">
+						<VisualState.Setters>
+							<Setter
+								Property="Button.BackgroundColor"
+								Value="Red" />
+						</VisualState.Setters>
+					</VisualState>
+					<VisualState
+						x:Name="PointerExited">
+						<VisualState.Setters>
+							<Setter
+								Property="Button.BackgroundColor"
+								Value="Green" />
+						</VisualState.Setters>
+					</VisualState>
+				</VisualStateGroup>
+			</VisualStateManager.VisualStateGroups>
+		</Button>
+	</Grid>
+</ContentPage>
